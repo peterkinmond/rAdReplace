@@ -1,6 +1,17 @@
-Get element under mouse upon click
-Investigate event bubbling from clicked element
-Investigate how to find computed size of an element
-Investigate how to create a prompt for a user to input URL
-Write that creates an overlayed iframe over the replaced ad unit
-Write script that will generate a chrome bookmark xml file
+[X] Get element under mouse upon click
+    Attach click event to body that will capture all events that bubble up
+    // $('body').click(function(e) { console.log(e.target) })
+[X] Investigate how to find computed offset of an element
+    // $('elem-id').offset().left
+    // $('elem-id').offset().top
+[ ] Write code creates an overlayed iframe over the replaced ad unit
+
+[ ] Investigate how to create a prompt for a user to input URL
+[ ] Investigate how to find computed size of an element
+[ ] write script that will generate a chrome bookmark xml file
+
+** After we have internet **
+
+[ ] Investigate how to inject jquery onto the site 
+    Ensure it doesn't break sites with existing jquery  
+[ ] Investigate event bubbling from clicked element
