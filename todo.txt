@@ -1,0 +1,6 @@
+Get element under mouse upon click
+Investigate event bubbling from clicked element
+Investigate how to find computed size of an element
+Investigate how to create a prompt for a user to input URL
+Write that creates an overlayed iframe over the replaced ad unit
+Write script that will generate a chrome bookmark xml file
