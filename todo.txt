@@ -4,7 +4,8 @@
 [X] Investigate how to find computed offset of an element
     // $('elem-id').offset().left
     // $('elem-id').offset().top
-[ ] Write code creates an overlayed iframe over the replaced ad unit
+[X] Write code creates an overlayed iframe over the replaced ad unit
+    // $('body').append('<iframe src="http://google.com" style="position:absolute;top:200px;left:200px; z-index:1000" scrolling="no" ></iframe>');
 
 [ ] Investigate how to create a prompt for a user to input URL
 [ ] Investigate how to find computed size of an element
