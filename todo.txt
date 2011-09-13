@@ -1,18 +1,15 @@
 [X] Get element under mouse upon click
-    Attach click event to body that will capture all events that bubble up
-    // $('body').click(function(e) { console.log(e.target) })
+[X] Attach click event to body that will capture all events that bubble up
 [X] Investigate how to find computed offset of an element
-    // $('elem-id').offset().left
-    // $('elem-id').offset().top
 [X] Write code creates an overlayed iframe over the replaced ad unit
-    // $('body').append('<iframe src="http://google.com" style="position:absolute;top:200px;left:200px; z-index:1000" scrolling="no" ></iframe>');
-
-[ ] Investigate how to create a prompt for a user to input URL
-[ ] Investigate how to find computed size of an element
-[ ] write script that will generate a chrome bookmark xml file
+[X] Investigate how to create a prompt for a user to input URL
+[X] Investigate how to find computed size of an element
+[ ] Write script that will generate a chrome bookmark xml file
+[ ] Unbind click event so that other functions on page (such as playing
+the video) will work correctly
 
 ** After we have internet **
 
 [ ] Investigate how to inject jquery onto the site 
     Ensure it doesn't break sites with existing jquery  
-[ ] Investigate event bubbling from clicked element
+[X] Investigate event bubbling from clicked element
