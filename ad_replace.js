@@ -1,7 +1,7 @@
 // Add this as a javascript bookmarklet in order to allow this functionality 
 (function() {
   var replaceAdCallback = function(e) { 
-    ensure_jquery();
+    load_jquery();
     var computedLeft = $(e.target).offset().left;
     var computedTop = $(e.target).offset().top;
     var computedWidth = $(e.target).css('width');
@@ -12,14 +12,9 @@
     $('body').unbind('click', replaceAdCallback);
   };
 
-  var ensure_jquery = function() {
-    typeof(jQuery);
+  var load_jquery = function() {
     if (typeof(jQuery) === 'undefined') {
-      alert('no jquery: adding it now!');
       document.body.innerHTML += '<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.js"></script>';
-    }
-    else {
-      alert('you already have jquery');
     }
   };
 

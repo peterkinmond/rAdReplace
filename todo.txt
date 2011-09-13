@@ -7,9 +7,10 @@
 [X] Write script that will generate a chrome bookmark xml file
 [X] Unbind click event so that other functions on page (such as playing
 the video) will work correctly
-
-** After we have internet **
-
 [X] Investigate how to inject jquery onto the site 
 [X] Ensure it doesn't break sites with existing jquery  
 [X] Investigate event bubbling from clicked element
+[ ] Refactor
+[ ] Add tests
+[ ] Add jasmine
+[ ] Add keyboard shortcut
