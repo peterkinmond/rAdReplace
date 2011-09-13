@@ -4,12 +4,12 @@
 [X] Write code creates an overlayed iframe over the replaced ad unit
 [X] Investigate how to create a prompt for a user to input URL
 [X] Investigate how to find computed size of an element
-[ ] Write script that will generate a chrome bookmark xml file
-[ ] Unbind click event so that other functions on page (such as playing
+[X] Write script that will generate a chrome bookmark xml file
+[X] Unbind click event so that other functions on page (such as playing
 the video) will work correctly
 
 ** After we have internet **
 
-[ ] Investigate how to inject jquery onto the site 
-    Ensure it doesn't break sites with existing jquery  
+[X] Investigate how to inject jquery onto the site 
+[X] Ensure it doesn't break sites with existing jquery  
 [X] Investigate event bubbling from clicked element
