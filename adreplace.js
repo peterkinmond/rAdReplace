@@ -2,20 +2,22 @@
 (function() {
   var replaceAdCallback = function(e) { 
     load_jquery();
-    var computedLeft = $(e.target).offset().left;
-    var computedTop = $(e.target).offset().top;
-    var computedWidth = $(e.target).css('width');
-    var computedHeight = $(e.target).css('height');
-    var adUnitURL = prompt('Enter ad unit URL');  
-    $('body').append('<iframe src="' + adUnitURL + '" style="position:absolute;top:' + computedTop + 'px;left:' + computedLeft + 'px;width:' + computedWidth +';height:' + computedHeight +'; z-index:1000; border:0" scrolling="no" ></iframe>');
-    e.preventDefault();
+    var adspot = $(e.target);
+    var adUnitUrl = prompt('Enter ad unit URL');  
+    createOverlayAd(adUnitUrl, adspot.offset().left, adspot.offset().top, adspot.css('width'), adspot.css('height'));
+
     $('body').unbind('click', replaceAdCallback);
+    e.preventDefault();
   };
 
   var load_jquery = function() {
     if (typeof(jQuery) === 'undefined') {
       document.body.innerHTML += '<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.js"></script>';
     }
+  };
+
+  var createOverlayAd = function(adunitUrl, offsetLeft, offsetTop, width, height) {
+    $('body').append('<iframe src="' + adunitUrl + '" style="position:absolute;top:' + offsetTop + 'px;left:' + offsetLeft + 'px;width:' + width +';height:' + height +'; z-index:1000; border:0" scrolling="no" ></iframe>');
   };
 
   $('body').click(replaceAdCallback);
