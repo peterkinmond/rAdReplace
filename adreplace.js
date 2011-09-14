@@ -22,15 +22,21 @@ function overlayIframes() {
   var iframes = document.body.getElementsByTagName('iframe');
   for(var i = 0; i < iframes.length; i++) {
     iframe = iframes[i];
+    console.log(iframe);
 
     var elem = document.createElement('div');
 
     elem.id = 'smookie_' + i;
     elem.style.position = 'absolute';
-    elem.style.left = findPos(iframe)[0];
-    elem.style.top = findPos(iframe)[1];
-    elem.style.width = iframe.offsetWidth;
-    elem.style.height = iframe.offsetHeight;
+    elem.style.left = findPos(iframe)[0] + 'px';
+    elem.style.top = findPos(iframe)[1] + 'px';
+    elem.style.width = iframe.offsetWidth + 'px';
+    elem.style.height = iframe.offsetHeight + 'px';
+
+    console.log(findPos(iframe)[0]);
+    console.log(findPos(iframe)[1]);
+    console.log(iframe.offsetWidth);
+    console.log(iframe.offsetHeight);
   
     document.body.appendChild(elem);
   }
