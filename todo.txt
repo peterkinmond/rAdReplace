@@ -10,7 +10,6 @@ the video) will work correctly
 [X] Investigate how to inject jquery onto the site 
 [X] Ensure it doesn't break sites with existing jquery  
 [X] Investigate event bubbling from clicked element
+[ ] Add tests (add jasmine)
 [ ] Refactor
-[ ] Add tests
-[ ] Add jasmine
-[ ] Add keyboard shortcut
+[ ] Introduce no-conflict jquery
