@@ -21,4 +21,5 @@
   };
 
   $('body').click(replaceAdCallback);
+  alert("Click on the ad placement you'd like to replace");
 })();
