@@ -10,6 +10,9 @@ the video) will work correctly
 [X] Investigate how to inject jquery onto the site 
 [X] Ensure it doesn't break sites with existing jquery  
 [X] Investigate event bubbling from clicked element
+[X] Remove any dependency on jQuery
+[ ] Make it so that any iframe or embed gets replaced by a div of the
+same size
+[ ] Allow events to bubble up and only replace elements whose size match
+the size of an ad
 [ ] Add tests (add jasmine)
-[ ] Refactor
-[ ] Introduce no-conflict jquery
