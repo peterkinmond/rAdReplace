@@ -11,6 +11,9 @@ the video) will work correctly
 [X] Ensure it doesn't break sites with existing jquery  
 [X] Investigate event bubbling from clicked element
 [X] Remove any dependency on jQuery
+[ ] New flow: User specifies width and height; We show the all possible
+ad spots of that size on the page; they select one; we ask them to input
+the ad tag and walla!
 [ ] Make it so that any iframe or embed gets replaced by a div of the
 same size
 [ ] Allow events to bubble up and only replace elements whose size match
