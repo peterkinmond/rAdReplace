@@ -8,6 +8,18 @@
     e.preventDefault();
   };
 
+  var get_matching_parent = function(elem) {
+    console.log(elem);
+    if (!elem) {
+      return null;
+    }
+    if (getDimensions(elem)[0] == 300 && getDimensions(elem)[1] == 241) {
+      return elem;
+    }
+    return get_matching_parent(elem.parentNode);
+  };
+
+
   var createOverlayAd = function(adunitUrl, offsetLeft, offsetTop, width, height) {
     var overlay = document.createElement('iframe');
 
@@ -55,10 +67,11 @@
     if (obj.offsetParent) {
       curleft = obj.offsetLeft;
       curtop = obj.offsetTop;
-      while (obj = obj.offsetParent) {
-
+      obj = obj.offsetParent;
+      while (obj) {
         curleft += obj.offsetLeft;
         curtop += obj.offsetTop;
+        obj = obj.offsetParent;
       }
     }
     return [curleft,curtop];
