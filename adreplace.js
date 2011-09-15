@@ -9,16 +9,6 @@
     e.preventDefault();
   };
 
-  var get_matching_parent = function(elem) {
-    if (!elem) {
-      return null;
-    }
-    if (getDimensions(elem)[0] == 300 && getDimensions(elem)[1] == 241) {
-      return elem;
-    }
-    return get_matching_parent(elem.parentNode);
-  };
-
 
   var createNewAd = function(adunitUrl, offsetLeft, offsetTop, width, height) {
     var overlay = document.createElement('iframe');
@@ -76,6 +66,17 @@
     }
     return [curleft,curtop];
   };
+
+  var get_matching_parent = function(elem) {
+    if (!elem) {
+      return null;
+    }
+    if (getDimensions(elem)[0] == 300 && getDimensions(elem)[1] == 241) {
+      return elem;
+    }
+    return get_matching_parent(elem.parentNode);
+  };
+
 
   overlayIframes();
   document.body.addEventListener('click', replaceAdCallback);
