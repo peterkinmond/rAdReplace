@@ -1,17 +1,17 @@
 (function() {
   var replaceAdCallback = function(e) { 
     var adUnitUrl = prompt('Enter ad unit URL');  
-    var adUnitWidth = prompt('Enter ad unit width');  
-    var adUnitHeight = prompt('Enter ad unit height');  
+    var adUnitWidth = parseInt(prompt('Enter ad unit width'), 10);  
+    var adUnitHeight = parseInt(prompt('Enter ad unit height'), 10); 
     var oldAd = e.target;
     var newAd = createNewAd(adUnitUrl, adUnitWidth, adUnitHeight);
-    console.log(newAd);
 
     if (oldAd.className == 'overlay_block') {
       oldAdId = 'replaced_overlay_' + oldAd.id.split('replace_overlay_')[1];
       oldAd = document.getElementById(oldAdId);
     }
-
+    
+    oldAd = get_matching_parent(oldAd, adUnitWidth, adUnitHeight);
     oldAd.parentNode.replaceChild(newAd, oldAd);
 
     document.body.removeEventListener('click', replaceAdCallback);
@@ -75,14 +75,17 @@
     return [curleft,curtop];
   };
 
-  var get_matching_parent = function(elem) {
+  var get_matching_parent = function(elem, width, height) {
+    var fudge_factor = 10;
+    console.log(elem);
     if (!elem) {
       return null;
     }
-    if (getDimensions(elem)[0] == 300 && getDimensions(elem)[1] == 241) {
+    if (getDimensions(elem)[0] > width - fudge_factor && getDimensions(elem)[0] < width + fudge_factor &&
+        getDimensions(elem)[1] > height - fudge_factor && getDimensions(elem)[1] < height + fudge_factor) {
       return elem;
     }
-    return get_matching_parent(elem.parentNode);
+    return get_matching_parent(elem.parentNode, width, height);
   };
 
   overlayIframes();
