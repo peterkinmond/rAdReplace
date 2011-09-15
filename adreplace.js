@@ -1,15 +1,15 @@
 (function() {
   var replaceAdCallback = function(e) { 
-    var adspot = e.target;
     var adUnitUrl = prompt('Enter ad unit URL');  
-    createOverlayAd(adUnitUrl, findPos(adspot)[0], findPos(adspot)[1], getDimensions(adspot)[0], getDimensions(adspot)[1]);
+    var oldAd = e.target;
+    var newAd = createNewAd(adUnitUrl, findPos(oldAd)[0], findPos(oldAd)[1], getDimensions(oldAd)[0], getDimensions(oldAd)[1]);
+    document.body.appendChild(newAd);
 
     document.body.removeEventListener('click', replaceAdCallback);
     e.preventDefault();
   };
 
   var get_matching_parent = function(elem) {
-    console.log(elem);
     if (!elem) {
       return null;
     }
@@ -20,7 +20,7 @@
   };
 
 
-  var createOverlayAd = function(adunitUrl, offsetLeft, offsetTop, width, height) {
+  var createNewAd = function(adunitUrl, offsetLeft, offsetTop, width, height) {
     var overlay = document.createElement('iframe');
 
     overlay.src = adunitUrl;
@@ -32,8 +32,8 @@
     overlay.style.height     = height + 'px';
     overlay.style.border     = 0;
     overlay.style.zIndex     = 1000000;
-
-    document.body.appendChild(overlay);
+  
+    return overlay;
   };
 
   var overlayIframes = function() {
@@ -48,13 +48,13 @@
       var elem = document.createElement('div');
 
       elem.style.position   = 'absolute';
-      elem.style.left       = findPos(iframe)[0] + 'px';
-      elem.style.top        = findPos(iframe)[1] + 'px';
+      elem.style.left       = iframe.offsetLeft + 'px';
+      elem.style.top        = iframe.offsetTop + 'px';
       elem.style.width      = getDimensions(iframe)[0] + 'px';
       elem.style.height     = getDimensions(iframe)[1] + 'px';
       elem.style.zIndex     = 999999;
 
-      document.body.appendChild(elem);
+      iframe.parentNode.appendChild(elem);
     }
   };
 
