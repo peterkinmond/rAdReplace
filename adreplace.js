@@ -22,13 +22,17 @@
       var elem = document.createElement('div');
 
       elem.style.position = 'absolute';
-      elem.style.left = findPos(iframe)[0] + 'px';
-      elem.style.top = findPos(iframe)[1] + 'px';
-      elem.style.width = iframe.offsetWidth + 'px';
-      elem.style.height = iframe.offsetHeight + 'px';
+      elem.style.left       = findPos(iframe)[0] + 'px';
+      elem.style.top        = findPos(iframe)[1] + 'px';
+      elem.style.width      = getDimensions(iframe)[0] + 'px';
+      elem.style.height     = getDimensions(iframe)[1] + 'px';
     
       document.body.appendChild(elem);
     }
+  };
+
+  var getDimensions = function(elem) {
+    return [elem.offsetWidth, elem.offsetHeight];
   };
 
   var findPos = function(obj) {
@@ -45,7 +49,7 @@
   };
 
   overlayIframes();
-  $('body').click(replaceAdCallback);
+  document.body.addEventListener('click', replaceAdCallback);
   alert("Click on the ad placement you'd like to replace");
 })();
 
