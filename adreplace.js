@@ -10,7 +10,19 @@
   };
 
   var createOverlayAd = function(adunitUrl, offsetLeft, offsetTop, width, height) {
-    $('body').append('<iframe src="' + adunitUrl + '" style="position:absolute;top:' + offsetTop + 'px;left:' + offsetLeft + 'px;width:' + width +'px;height:' + height +'px; z-index:1000; border:0" scrolling="no" ></iframe>');
+    var overlay = document.createElement('iframe');
+
+    overlay.src = adunitUrl;
+    overlay.scrolling = 'no';
+    overlay.style.position   = 'absolute';
+    overlay.style.left       = offsetLeft + 'px';
+    overlay.style.top        = offsetTop + 'px';
+    overlay.style.width      = width + 'px';
+    overlay.style.height     = height + 'px';
+    overlay.style.border     = 0;
+    overlay.style.zIndex     = 1000;
+
+    document.body.appendChild(overlay);
   };
 
   var overlayIframes = function() {
@@ -20,7 +32,7 @@
 
       var elem = document.createElement('div');
 
-      elem.style.position = 'absolute';
+      elem.style.position   = 'absolute';
       elem.style.left       = findPos(iframe)[0] + 'px';
       elem.style.top        = findPos(iframe)[1] + 'px';
       elem.style.width      = getDimensions(iframe)[0] + 'px';
@@ -40,6 +52,7 @@
       curleft = obj.offsetLeft;
       curtop = obj.offsetTop;
       while (obj = obj.offsetParent) {
+
         curleft += obj.offsetLeft;
         curtop += obj.offsetTop;
       }
