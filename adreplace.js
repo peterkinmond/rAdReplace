@@ -5,7 +5,7 @@
     var adUnitUrl = prompt('Enter ad unit URL');  
     createOverlayAd(adUnitUrl, findPos(adspot)[0], findPos(adspot)[1], getDimensions(adspot)[0], getDimensions(adspot)[1]);
 
-    $('body').unbind('click', replaceAdCallback);
+    document.body.removeEventListener('click', replaceAdCallback);
     e.preventDefault();
   };
 
