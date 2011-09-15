@@ -1,25 +1,30 @@
 (function() {
   var replaceAdCallback = function(e) { 
     var adUnitUrl = prompt('Enter ad unit URL');  
+    var adUnitWidth = prompt('Enter ad unit width');  
+    var adUnitHeight = prompt('Enter ad unit height');  
     var oldAd = e.target;
-    var newAd = createNewAd(adUnitUrl, findPos(oldAd)[0], findPos(oldAd)[1], getDimensions(oldAd)[0], getDimensions(oldAd)[1]);
-    document.body.appendChild(newAd);
+    var newAd = createNewAd(adUnitUrl, adUnitWidth, adUnitHeight);
+    console.log(newAd);
+
+    if (oldAd.className == 'overlay_block') {
+      oldAdId = 'replaced_overlay_' + oldAd.id.split('replace_overlay_')[1];
+      oldAd = document.getElementById(oldAdId);
+    }
+
+    oldAd.parentNode.replaceChild(newAd, oldAd);
 
     document.body.removeEventListener('click', replaceAdCallback);
     e.preventDefault();
   };
 
-
-  var createNewAd = function(adunitUrl, offsetLeft, offsetTop, width, height) {
+  var createNewAd = function(adunitUrl, width, height) {
     var overlay = document.createElement('iframe');
 
     overlay.src = adunitUrl;
-    overlay.scrolling = 'no';
-    overlay.style.position   = 'absolute';
-    overlay.style.left       = offsetLeft + 'px';
-    overlay.style.top        = offsetTop + 'px';
-    overlay.style.width      = width + 'px';
-    overlay.style.height     = height + 'px';
+    overlay.scrolling        = 'no';
+    overlay.width            = width + 'px';
+    overlay.height           = height + 'px';
     overlay.style.border     = 0;
     overlay.style.zIndex     = 1000000;
   
@@ -37,13 +42,16 @@
 
       var elem = document.createElement('div');
 
+      elem.id               = 'replace_overlay_' + i;
+      elem.className        = 'overlay_block';
       elem.style.position   = 'absolute';
       elem.style.left       = iframe.offsetLeft + 'px';
       elem.style.top        = iframe.offsetTop + 'px';
       elem.style.width      = getDimensions(iframe)[0] + 'px';
       elem.style.height     = getDimensions(iframe)[1] + 'px';
       elem.style.zIndex     = 999999;
-
+      
+      iframe.id = 'replaced_overlay_' + i;
       iframe.parentNode.appendChild(elem);
     }
   };
@@ -76,7 +84,6 @@
     }
     return get_matching_parent(elem.parentNode);
   };
-
 
   overlayIframes();
   document.body.addEventListener('click', replaceAdCallback);
