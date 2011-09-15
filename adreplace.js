@@ -20,13 +20,17 @@
     overlay.style.width      = width + 'px';
     overlay.style.height     = height + 'px';
     overlay.style.border     = 0;
-    overlay.style.zIndex     = 1000;
+    overlay.style.zIndex     = 1000000;
 
     document.body.appendChild(overlay);
   };
 
   var overlayIframes = function() {
     var iframes = document.body.getElementsByTagName('iframe');
+    var embeds = document.body.getElementsByTagName('embed');
+    iframes = Array.prototype.slice.call(iframes);
+    embeds = Array.prototype.slice.call(embeds);
+    iframes = iframes.concat(embeds);
     for(var i = 0; i < iframes.length; i++) {
       iframe = iframes[i];
 
@@ -37,7 +41,8 @@
       elem.style.top        = findPos(iframe)[1] + 'px';
       elem.style.width      = getDimensions(iframe)[0] + 'px';
       elem.style.height     = getDimensions(iframe)[1] + 'px';
-    
+      elem.style.zIndex     = 999999;
+
       document.body.appendChild(elem);
     }
   };
