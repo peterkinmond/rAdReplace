@@ -1,4 +1,3 @@
-// Add this as a javascript bookmarklet in order to allow this functionality 
 (function() {
   var replaceAdCallback = function(e) { 
     var adspot = e.target;
