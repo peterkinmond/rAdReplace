@@ -1,8 +1,8 @@
 (function() {
   var replaceAdCallback = function(e) { 
     var adUnitUrl = prompt('Enter ad unit URL');  
-    var adUnitWidth = parseInt(prompt('Enter ad unit width'), 10);  
-    var adUnitHeight = parseInt(prompt('Enter ad unit height'), 10); 
+    var adUnitWidth = 300;
+    var adUnitHeight = 250;
     var oldAd = e.target;
     var newAd = createNewAd(adUnitUrl, adUnitWidth, adUnitHeight);
 
@@ -77,7 +77,6 @@
 
   var get_matching_parent = function(elem, width, height) {
     var fudge_factor = 10;
-    console.log(elem);
     if (!elem) {
       return null;
     }
