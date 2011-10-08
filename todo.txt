@@ -19,3 +19,5 @@ same size
 [ ] Allow events to bubble up and only replace elements whose size match
 the size of an ad
 [ ] Add tests (add jasmine)
+[ ] Prevent rewriting of the page if the user hits cancel
+
